@@ -15,7 +15,11 @@ public class NearEarthObjects {
 	private static Logger logger = LogManager.getLogger();
 	public static final int MAX_DAYS_RANGE = 7;
 
-
+	public static void printAndLogError(String msg) {
+		System.out.println(msg);
+		logger.error(msg);
+	}
+	
 	public static long getDateDiff(Calendar date1, Calendar date2, TimeUnit timeUnit) {
 	    long diffInMillies = date1.getTimeInMillis() - date2.getTimeInMillis();
 	    return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
@@ -42,7 +46,7 @@ public class NearEarthObjects {
 		if(getDateDiff(dateEnd,dateBegin,TimeUnit.DAYS) > MAX_DAYS_RANGE)
 		{
 			// error
-			logger.error("Invalid date range: maximum of "+MAX_DAYS_RANGE+" days");
+			printAndLogError("Invalid date range: maximum of "+MAX_DAYS_RANGE+" days");
 			return false;
 		}
 		
@@ -50,7 +54,7 @@ public class NearEarthObjects {
 		if(dateBegin.getTimeInMillis() > dateEnd.getTimeInMillis())
 		{
 			// error
-			logger.error("Invalid date range: chronologic order required");
+			printAndLogError("Invalid date range: chronologic order required");
 			return false;
 		}
 		
@@ -68,7 +72,7 @@ public class NearEarthObjects {
 		if(args.length != 2)
 		{
 			// error
-			logger.error("Wrong number of arguments.");
+			printAndLogError("Wrong number of arguments.");
 			printHelp();
 			return;
 		}
@@ -77,7 +81,7 @@ public class NearEarthObjects {
 		if(dateBegin == null || dateEnd == null)
 		{
 			//error
-			logger.error("Incorrect date format.");
+			printAndLogError("Incorrect date format.");
 			printHelp();
 			return;
 		}
