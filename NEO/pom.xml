@@ -29,12 +29,6 @@
   	</dependency>
   	<dependency>
   		<groupId>org.apache.logging.log4j</groupId>
-  		<artifactId>log4j</artifactId>
-  		<version>2.9.1</version>
-  		<type>pom</type>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.logging.log4j</groupId>
   		<artifactId>log4j-api</artifactId>
   		<version>2.9.1</version>
   	</dependency>
@@ -58,4 +52,7 @@
   		</plugin>
   	</plugins>
   </build>
+  <properties>
+  	<source>1.8</source>
+  </properties>
 </project>
